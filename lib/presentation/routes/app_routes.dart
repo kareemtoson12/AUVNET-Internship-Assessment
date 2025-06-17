@@ -7,7 +7,6 @@ class AppRoutes {
   //Signup
   static const String signup = '/signup';
 
-
   // Add more routes as needed
 
   static String getSplashRoute() => splash;

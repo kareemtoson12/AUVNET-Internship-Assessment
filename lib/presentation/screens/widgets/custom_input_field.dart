@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nawel/app/app_colors.dart';
 
 class CustomInputField extends StatelessWidget {
   final String hintText;
@@ -18,9 +19,9 @@ class CustomInputField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
-        prefixIcon: Icon(prefixIcon, color: const Color(0xFF808080)),
+        prefixIcon: Icon(prefixIcon, color: AppColors.iconGrey),
         filled: true,
-        fillColor: Colors.grey[100],
+        fillColor: AppColors.inputFillGrey,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide.none,

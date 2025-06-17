@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nawel/presentation/widgets/custom_input_field.dart';
-import 'package:nawel/presentation/widgets/primary_button.dart';
+import 'package:nawel/presentation/screens/widgets/custom_input_field.dart';
+import 'package:nawel/presentation/screens/widgets/primary_button.dart';
+import 'package:nawel/app/app_colors.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -11,7 +12,7 @@ class SignUpScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.backgroundWhite,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -50,7 +51,7 @@ class SignUpScreen extends StatelessWidget {
                 PrimaryButton(
                   text: 'Sign up',
                   onPressed: () {
-                    // TODO: Implement sign up logic
+                    Navigator.pushNamed(context, '/home');
                   },
                 ),
                 SizedBox(height: screenHeight * 0.02),
@@ -61,7 +62,7 @@ class SignUpScreen extends StatelessWidget {
                   },
                   child: const Text(
                     'Already have an account? Log in',
-                    style: TextStyle(color: Colors.blue, fontSize: 16.0),
+                    style: TextStyle(color: AppColors.blueText, fontSize: 16.0),
                   ),
                 ),
               ],
