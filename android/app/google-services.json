@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "410685986181",
+    "project_id": "task-71e07",
+    "storage_bucket": "task-71e07.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410685986181:android:3cc5b071bfaf58ce9da0ec",
+        "android_client_info": {
+          "package_name": "com.example.nawel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8JICHUZDj76uLz76sMfGa5HQdx0BkcJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
