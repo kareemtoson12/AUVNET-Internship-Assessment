@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nawel/app/app_colors.dart';
+import 'package:nawel/data/services/local_storage_service.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({super.key});
@@ -29,7 +32,12 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         children: List.generate(_items.length, (index) {
           final selected = _selectedIndex == index;
           return GestureDetector(
-            onTap: () => setState(() => _selectedIndex = index),
+            onTap: () async {
+              setState(() => _selectedIndex = index);
+              if (_items[index].label == 'Profile') {
+                showProfileSheet(context);
+              }
+            },
             child: SizedBox(
               width: screenWidth / _items.length,
               child: Column(
@@ -76,6 +84,78 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           );
         }),
       ),
+    );
+  }
+
+  Future<void> _logout(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      await LocalStorageService.clearUser();
+      if (context.mounted) {
+        Navigator.of(
+          context,
+        ).pushNamedAndRemoveUntil('/login', (route) => false);
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Logout failed: $e')));
+      }
+    }
+  }
+
+  void showProfileSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      backgroundColor: AppColors.backgroundWhite,
+      builder: (context) {
+        final email = LocalStorageService.getUserEmail() ?? 'N/A';
+        final uid = LocalStorageService.getUserUid() ?? 'N/A';
+        return Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.person, size: 64, color: AppColors.primaryPurple),
+              const SizedBox(height: 16),
+              Text(
+                email,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text('UID: $uid', style: const TextStyle(color: Colors.grey)),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryPurple,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  onPressed: () async {
+                    Navigator.of(context).pop(); // Close the sheet
+                    await _logout(context); // Call your logout function
+                  },
+                  child: const Text(
+                    'Logout',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

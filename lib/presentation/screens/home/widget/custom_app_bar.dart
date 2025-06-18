@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nawel/app/app_colors.dart';
 import 'package:nawel/data/services/local_storage_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -113,7 +114,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Future<void> _logout(BuildContext context) async {
     try {
+      // Sign out from Firebase Auth
+      await FirebaseAuth.instance.signOut();
+
+      // Clear local storage
       await LocalStorageService.clearUser();
+
       if (context.mounted) {
         Navigator.of(
           context,

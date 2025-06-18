@@ -5,6 +5,9 @@ import 'package:nawel/presentation/screens/login/login_screen.dart';
 import 'package:nawel/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:nawel/presentation/screens/signUp/SignUpScreen.dart';
 import 'package:nawel/presentation/screens/splash/splash_screen.dart';
+import 'package:nawel/presentation/screens/services/food_screen.dart';
+import 'package:nawel/presentation/screens/services/health_screen.dart';
+import 'package:nawel/presentation/screens/services/groceries_screen.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -19,6 +22,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case AppRoutes.signup:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      case AppRoutes.food:
+        return MaterialPageRoute(builder: (_) => const FoodScreen());
+      case AppRoutes.health:
+        return MaterialPageRoute(builder: (_) => const HealthScreen());
+      case AppRoutes.groceries:
+        return MaterialPageRoute(builder: (_) => const GroceriesScreen());
       default:
         return MaterialPageRoute(
           builder:

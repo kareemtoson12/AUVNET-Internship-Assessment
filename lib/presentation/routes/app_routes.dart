@@ -4,6 +4,9 @@ class AppRoutes {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String home = '/home';
+  static const String food = '/food';
+  static const String health = '/health';
+  static const String groceries = '/groceries';
 
   // Add more routes as needed
 

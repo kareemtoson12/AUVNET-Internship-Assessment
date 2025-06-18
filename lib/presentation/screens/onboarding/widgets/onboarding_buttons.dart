@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../app/styles.dart'; // Import AppStyles
+import '../../../../data/services/local_storage_service.dart';
 
 class OnboardingButtons extends StatelessWidget {
   final PageController pageController;
@@ -24,8 +25,13 @@ class OnboardingButtons extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/login');
+              onPressed: () async {
+                // Mark onboarding as complete
+                await LocalStorageService.setOnboardingComplete(true);
+                // Navigate to login
+                if (context.mounted) {
+                  Navigator.pushReplacementNamed(context, '/login');
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF9100F5),
