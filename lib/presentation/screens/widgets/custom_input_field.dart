@@ -6,6 +6,7 @@ class CustomInputField extends StatelessWidget {
   final IconData prefixIcon;
   final bool obscureText;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   const CustomInputField({
     super.key,
@@ -13,13 +14,15 @@ class CustomInputField extends StatelessWidget {
     required this.prefixIcon,
     this.obscureText = false,
     this.controller,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       obscureText: obscureText,
+      validator: validator,
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: Icon(prefixIcon, color: AppColors.iconGrey),

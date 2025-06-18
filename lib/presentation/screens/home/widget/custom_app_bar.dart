@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nawel/app/app_colors.dart';
+import 'package:nawel/data/services/local_storage_service.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -53,10 +54,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ],
                 ),
-                CircleAvatar(
-                  radius: screenHeight * 0.035,
-                  backgroundImage:
-                      Image.asset('assets/images/person.png').image,
+                GestureDetector(
+                  onTap: () => _showProfileMenu(context),
+                  child: CircleAvatar(
+                    radius: screenHeight * 0.035,
+                    backgroundImage:
+                        Image.asset('assets/images/person.png').image,
+                  ),
                 ),
               ],
             ),
@@ -73,6 +77,55 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
     );
+  }
+
+  void _showProfileMenu(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Profile'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Email: ${LocalStorageService.getUserEmail() ?? 'N/A'}'),
+              const SizedBox(height: 16),
+              Text('UID: ${LocalStorageService.getUserUid() ?? 'N/A'}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.of(context).pop();
+                await _logout(context);
+              },
+              child: const Text('Logout'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _logout(BuildContext context) async {
+    try {
+      await LocalStorageService.clearUser();
+      if (context.mounted) {
+        Navigator.of(
+          context,
+        ).pushNamedAndRemoveUntil('/login', (route) => false);
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Logout failed: $e')));
+      }
+    }
   }
 
   @override

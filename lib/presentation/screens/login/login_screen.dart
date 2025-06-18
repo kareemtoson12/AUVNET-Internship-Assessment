@@ -7,6 +7,8 @@ import 'package:nawel/presentation/bloc/logic/auth.dart';
 import 'package:nawel/presentation/bloc/events/auth.dart';
 import 'package:nawel/presentation/bloc/state/auth.dart';
 import 'package:nawel/app/di.dart';
+import 'package:nawel/app/error_handler.dart';
+import 'package:nawel/data/services/local_storage_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,6 +23,16 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    // Pre-fill email from local storage
+    final savedEmail = LocalStorageService.getUserEmail();
+    if (savedEmail != null) {
+      _emailController.text = savedEmail;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -33,9 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
             // Navigate to home or show success
             Navigator.pushReplacementNamed(context, '/home');
           } else if (state.error != null) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.error!)));
+            ErrorHandler.showError(context, state.error);
           }
         },
         child: Scaffold(

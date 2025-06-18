@@ -21,9 +21,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await loginUseCase(event.email, event.password);
       emit(state.copyWith(isLoading: false, isSuccess: true));
     } catch (e) {
-      emit(
-        state.copyWith(isLoading: false, error: e.toString(), isSuccess: false),
-      );
+      emit(state.copyWith(isLoading: false, error: e, isSuccess: false));
     }
   }
 }

@@ -1,15 +1,14 @@
-// lib/data/repositories/auth_repository_impl.dart
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nawel/domain/repos/login_repo.dart';
+import 'package:nawel/domain/repos/signup_repo.dart';
 import 'package:nawel/data/services/local_storage_service.dart';
 
-class AuthRepositoryImpl implements AuthRepository {
+class SignUpRepositoryImpl implements SignUpRepository {
   final FirebaseAuth firebaseAuth;
-  AuthRepositoryImpl(this.firebaseAuth);
+  SignUpRepositoryImpl(this.firebaseAuth);
 
   @override
-  Future<void> login(String email, String password) async {
-    final userCredential = await firebaseAuth.signInWithEmailAndPassword(
+  Future<void> signUp(String email, String password) async {
+    final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );

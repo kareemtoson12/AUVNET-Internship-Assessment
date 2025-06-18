@@ -27,9 +27,9 @@ android {
         applicationId = "com.example.nawel"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34
-        multiDexEnabled true
+        multiDexEnabled = true
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
@@ -56,5 +56,5 @@ flutter {
     source = "../.."
 }
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation("com.android.support:multidex:1.0.3")
 }
