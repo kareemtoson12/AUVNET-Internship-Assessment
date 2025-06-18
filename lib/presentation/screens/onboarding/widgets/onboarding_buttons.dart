@@ -25,14 +25,7 @@ class OnboardingButtons extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                if (currentPage < totalPages - 1) {
-                  pageController.nextPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
-                } else {
-                  Navigator.pushReplacementNamed(context, '/login');
-                }
+                Navigator.pushReplacementNamed(context, '/login');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF9100F5),
@@ -48,7 +41,17 @@ class OnboardingButtons extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          Text('next', style: AppStyles.nextButtonStyle),
+          TextButton(
+            onPressed: () {
+              if (currentPage < totalPages - 1) {
+                pageController.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              }
+            },
+            child: Text('Next', style: AppStyles.nextButtonStyle),
+          ),
         ],
       ),
     );

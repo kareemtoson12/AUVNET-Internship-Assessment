@@ -45,6 +45,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           _currentPage = page;
                         });
                       },
+                      currentPage: _currentPage,
                     ),
                   ),
                   OnboardingButtons(

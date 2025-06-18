@@ -5,11 +5,13 @@ import 'onboarding_text_content.dart';
 class OnboardingPageView extends StatefulWidget {
   final PageController pageController;
   final Function(int) onPageChanged;
+  final int currentPage;
 
   const OnboardingPageView({
     super.key,
     required this.pageController,
     required this.onPageChanged,
+    required this.currentPage,
   });
 
   @override
@@ -61,7 +63,10 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: index == 0 ? Colors.purple : Colors.grey[300],
+                color:
+                    index == widget.currentPage
+                        ? Colors.purple
+                        : Colors.grey[300],
                 shape: BoxShape.circle,
               ),
             ),
