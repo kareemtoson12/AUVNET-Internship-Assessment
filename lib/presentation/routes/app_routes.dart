@@ -1,11 +1,9 @@
 class AppRoutes {
-  static const String splash = '/';
+  static const String splash = '/splash';
   static const String onboarding = '/onboarding';
-  static const String home = '/home';
-  //login
   static const String login = '/login';
-  //Signup
   static const String signup = '/signup';
+  static const String home = '/home';
 
   // Add more routes as needed
 

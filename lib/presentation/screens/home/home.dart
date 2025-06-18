@@ -22,17 +22,18 @@ class Home extends StatelessWidget {
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(screenWidth * 0.03), // Responsive padding
+          padding: EdgeInsets.all(screenWidth * 0.03),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const ServicesSection(),
 
               const GotACodeSection(),
-              SizedBox(height: screenHeight * 0.01),
-              const ShortcutsSection(),
 
+              const ShortcutsSection(),
+              SizedBox(height: screenHeight * 0.01),
               const AdvertisingCarousel(),
+              SizedBox(height: screenHeight * 0.05),
               PopularRestaurantsNearby(),
             ],
           ),

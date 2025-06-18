@@ -31,6 +31,7 @@ class ServiceCard extends StatelessWidget {
         children: <Widget>[
           SizedBox(
             height: screenHeight * 0.09,
+            width: screenWidth * 0.8,
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.grey[200],

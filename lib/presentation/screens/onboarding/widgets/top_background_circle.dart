@@ -9,11 +9,11 @@ class TopBackgroundCircle extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Positioned(
-      top: -screenHeight * 0.05, // Responsive top offset
-      left: -screenWidth * 0.25, // Responsive left offset
+      top: -screenHeight * 0.05,
+      left: -screenWidth * 0.25,
       child: Container(
-        width: screenWidth * 0.8, // Responsive width
-        height: screenWidth * 0.8, // Responsive height (keep it circular)
+        width: screenWidth * 0.8,
+        height: screenWidth * 0.8,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [

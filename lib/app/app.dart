@@ -11,7 +11,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Clean Architecture App',
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.onboarding,
       onGenerateRoute: AppRouter.generateRoute,
     );
   }

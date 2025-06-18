@@ -13,11 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              AppColors.primaryPurple,
-
-              AppColors.orange,
-            ], // Shades of purple, pink, and orange
+            colors: [AppColors.primaryPurple, AppColors.orange],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -28,7 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           screenHeight * 0.06,
           screenWidth * 0.05,
           screenHeight * 0.03,
-        ), // Responsive padding
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -44,11 +40,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       style: TextStyle(
                         color: AppColors.blackText,
                         fontSize: screenHeight * 0.02,
-                      ), // Responsive font size
+                      ),
                     ),
-                    SizedBox(
-                      height: screenHeight * 0.005,
-                    ), // Responsive spacing
+                    SizedBox(height: screenHeight * 0.005),
                     Text(
                       'Al Satwa, 81A Street',
                       style: TextStyle(
@@ -60,20 +54,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ],
                 ),
                 CircleAvatar(
-                  radius: screenHeight * 0.035, // Responsive avatar size
+                  radius: screenHeight * 0.035,
                   backgroundImage:
-                      Image.asset(
-                        'assets/images/person.png',
-                      ).image, // User profile picture
+                      Image.asset('assets/images/person.png').image,
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.01), // Responsive spacing
+            SizedBox(height: screenHeight * 0.01),
             Text(
               'Hi hepa!',
               style: TextStyle(
                 color: AppColors.backgroundWhite,
-                fontSize: screenHeight * 0.04, // Responsive font size
+                fontSize: screenHeight * 0.04,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -84,5 +76,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(200.0); // Adjust height as needed
+  Size get preferredSize => Size.fromHeight(200.0);
 }

@@ -1,45 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:nawel/presentation/routes/app_routes.dart';
 import 'package:nawel/presentation/screens/home/home.dart';
 import 'package:nawel/presentation/screens/login/login_screen.dart';
+import 'package:nawel/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:nawel/presentation/screens/signUp/SignUpScreen.dart';
-import 'app_routes.dart';
-import '../screens/splash/splash_screen.dart';
-import '../screens/onboarding/onboarding_screen.dart';
+import 'package:nawel/presentation/screens/splash/splash_screen.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-        //home
-      case AppRoutes.home:
-        return MaterialPageRoute(
-          builder: (_) => Home()
-          
-        );
       case AppRoutes.onboarding:
-
-
-      
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+      case AppRoutes.home:
+        return MaterialPageRoute(builder: (_) => const Home());
       case AppRoutes.login:
-        return MaterialPageRoute(
-          builder:
-              (_) =>
-                  const LoginScreen(), // Assuming you have a LoginScreen widget
-        );
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       case AppRoutes.signup:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
-
-      // Add more routes as needed
       default:
         return MaterialPageRoute(
           builder:
-              (_) => Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${settings.name}'),
-                ),
-              ),
+              (_) =>
+                  const Scaffold(body: Center(child: Text('Route not found'))),
         );
     }
   }

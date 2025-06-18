@@ -8,40 +8,46 @@ class ShortcutsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Shortcuts:',
-          style: TextStyle(
-            fontSize: screenWidth * 0.06,
-            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: screenWidth * 0.03,
+        vertical: screenWidth * 0.02,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Shortcuts:',
+            style: TextStyle(
+              fontSize: screenWidth * 0.05,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: screenWidth * 0.19,
-            crossAxisSpacing: screenWidth * 0.02,
-            mainAxisSpacing: screenWidth * 0.005, // قلل المسافة الرأسية هنا
-            childAspectRatio:
-                0.5, // جرب تقليلها بدل 0.3 لجعل العناصر أكثر توازناً
-          ),
+          SizedBox(height: screenWidth * 0.03),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: screenWidth * 0.19,
+              crossAxisSpacing: screenWidth * 0.02,
+              mainAxisSpacing: screenWidth * 0.005,
+              childAspectRatio: 0.5,
+            ),
 
-          itemCount: _shortcutItems.length,
-          itemBuilder: (context, index) {
-            final item = _shortcutItems[index];
-            return _ShortcutItem(
-              imagePath: item['imagePath'] as String,
-              label: item['label'] as String,
-              isSvg: item['isSvg'] as bool? ?? false,
-              isStack: item['isStack'] as bool? ?? false,
-            );
-          },
-        ),
-        SizedBox(height: 0),
-      ],
+            itemCount: _shortcutItems.length,
+            itemBuilder: (context, index) {
+              final item = _shortcutItems[index];
+              return _ShortcutItem(
+                imagePath: item['imagePath'] as String,
+                label: item['label'] as String,
+                isSvg: item['isSvg'] as bool? ?? false,
+                isStack: item['isStack'] as bool? ?? false,
+              );
+            },
+          ),
+          SizedBox(height: 0),
+        ],
+      ),
     );
   }
 }

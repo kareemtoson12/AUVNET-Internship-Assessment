@@ -13,14 +13,20 @@ class ServicesSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Services:',
-          style: TextStyle(
-            fontSize: screenHeight * 0.03,
-            fontWeight: FontWeight.bold,
-          ),
+        Row(
+          children: [
+            SizedBox(width: screenHeight * 0.015),
+
+            Text(
+              'Services:',
+              style: TextStyle(
+                fontSize: screenHeight * 0.025,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
-        SizedBox(height: screenHeight * 0.02),
+        SizedBox(height: screenHeight * 0.01),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const <Widget>[

@@ -19,7 +19,7 @@ class AppStyles {
 
   static const TextStyle nextButtonStyle = TextStyle(
     fontSize: 14,
-    color: Colors.black45,
+    color: Color(0xff677294),
   );
 
   static const TextStyle timeTextStyle = TextStyle(

@@ -26,6 +26,8 @@ class _AdvertisingCarouselState extends State<AdvertisingCarousel> {
       children: [
         SizedBox(
           height: screenHeight * 0.2,
+          width: screenWidth * 0.9,
+
           child: PageView.builder(
             controller: _controller,
             itemCount: 5,
@@ -36,10 +38,19 @@ class _AdvertisingCarouselState extends State<AdvertisingCarousel> {
             },
             itemBuilder:
                 (context, index) => Center(
-                  child: Image.asset(
-                    'assets/images/advertising.png',
-                    fit: BoxFit.cover,
-                    width: screenWidth * 0.8,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.grey[300]!, width: 2),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(18),
+                      child: Image.asset(
+                        'assets/images/advertising.png',
+                        fit: BoxFit.cover,
+                        width: screenWidth * 1.2,
+                      ),
+                    ),
                   ),
                 ),
           ),

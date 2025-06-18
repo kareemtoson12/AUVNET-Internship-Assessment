@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nawel/app/app_colors.dart';
 import 'package:nawel/presentation/screens/widgets/custom_input_field.dart';
 import 'package:nawel/presentation/screens/widgets/primary_button.dart';
-import 'package:nawel/app/app_colors.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -16,50 +16,32 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.1,
-            ), // Responsive horizontal padding
+            padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // Logo
                 Image.asset(
                   'assets/images/nawel.png',
                   fit: BoxFit.contain,
                   height: screenHeight * 0.4,
-                ), // Responsive logo height
-
-                SizedBox(height: screenHeight * 0.05), // Responsive spacing
-                // Email Input Field
-                CustomInputField(
-                  hintText: 'mail',
-                  prefixIcon: Icons.mail_outline,
                 ),
-                SizedBox(height: screenHeight * 0.02), // Responsive spacing
-                // Password Input Field
+                SizedBox(height: screenHeight * 0.05),
+                CustomInputField(hintText: 'Email', prefixIcon: Icons.email),
+                SizedBox(height: screenHeight * 0.02),
                 CustomInputField(
-                  hintText: 'password',
-                  prefixIcon: Icons.lock_outline,
+                  hintText: 'Password',
+                  prefixIcon: Icons.lock,
                   obscureText: true,
                 ),
-                SizedBox(height: screenHeight * 0.03), // Responsive spacing
-                // Log In Button
-                PrimaryButton(
-                  text: 'Log in',
-                  onPressed: () {
-                    // TODO: Implement login logic
-                  },
-                ),
-                SizedBox(height: screenHeight * 0.02), // Responsive spacing
-                // Create an account button
+                SizedBox(height: screenHeight * 0.03),
+                PrimaryButton(text: 'Log In', onPressed: () {}),
+                SizedBox(height: screenHeight * 0.02),
                 TextButton(
                   onPressed: () {
+                    // Navigate to Forgot Password screen
                     Navigator.pushNamed(context, '/signup');
                   },
-                  child: const Text(
-                    'Create an account',
-                    style: TextStyle(color: AppColors.blueText, fontSize: 16.0),
-                  ),
+                  child: const Text('Don\'t have an account? Sign up'),
                 ),
               ],
             ),
