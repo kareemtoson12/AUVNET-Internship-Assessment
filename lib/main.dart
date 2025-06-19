@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:nawel/presentation/routes/app_routes.dart';
+
 import 'firebase_options.dart';
 import 'app/app.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'data/services/local_storage_service.dart';
 
 void main() async {
@@ -15,8 +15,5 @@ void main() async {
   // Initialize Hive for local storage
   await LocalStorageService.init();
 
-  print('FirebaseAuth plugin is linked: ${FirebaseAuth.instance}');
-
   runApp(const App());
 }
-

@@ -1,6 +1,6 @@
 // Example in main.dart or a di.dart file
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nawel/data/repositry/repo_impl.dart';
+import 'package:nawel/data/repositry/login_repo_impl.dart';
 import 'package:nawel/data/repositry/signup_repo_impl.dart';
 import 'package:nawel/data/repositry/logout_repo_impl.dart';
 import 'package:nawel/domain/usecases/login_usecase.dart';

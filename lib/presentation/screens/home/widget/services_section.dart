@@ -4,7 +4,7 @@ import 'package:nawel/presentation/screens/home/widget/service_card.dart';
 import 'package:nawel/presentation/routes/app_routes.dart';
 
 class ServicesSection extends StatelessWidget {
-  const ServicesSection({super.key});
+  const  ServicesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
