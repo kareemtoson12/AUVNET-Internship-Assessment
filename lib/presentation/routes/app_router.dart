@@ -22,12 +22,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case AppRoutes.signup:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
-      case AppRoutes.food:
-        return MaterialPageRoute(builder: (_) => const FoodScreen());
-      case AppRoutes.health:
-        return MaterialPageRoute(builder: (_) => const HealthScreen());
-      case AppRoutes.groceries:
-        return MaterialPageRoute(builder: (_) => const GroceriesScreen());
+
       default:
         return MaterialPageRoute(
           builder:
