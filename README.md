@@ -26,7 +26,7 @@ A modern Flutter application that provides food delivery, groceries, and health 
 
 1. Clone the repository:
 ```bash
-git clone [your-repository-url]
+git clone [ https://github.com/kareemtoson12/AUVNET-Internship-Assessment.git]
 cd nawel
 ```
 
